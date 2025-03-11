@@ -1,7 +1,7 @@
 # Портфолио разработчика. Поля ввода данных: названием, ссылки на репозиторий (рабочая). БД: title, link
 # Сделать очистку ленты сообщений, запускаемую кнопкой "Clear".
 
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask("Developer's portfolio")
