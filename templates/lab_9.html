@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Developer's portfolio</title>
+    <script type="text/javascript" src="/static/lab.js"></script>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            text-align:center;
+            background-color: #fffafa;
+            color: #015D52;
+            font-family: 'Kalam';
+            margin: 0;
+        }
+        a{color:#252850;}
+        a:active{color:#252850;}
+        a:visited{color:#483d8b;}
+        input{
+            color: #015D52;
+            font-family: 'Kalam';
+            padding: 6px 50px;
+            border-radius: 4px;
+            border: 2px dotted #015D52;
+            }
+       .btn {
+             text-decoration: none;
+             color: #6b5770;
+             background-image: linear-gradient(90deg, #1cac78, #3b5998);
+             display: inline-block;
+             padding: 7px 30px;
+             border: 1px solid;
+             position: relative;
+             z-index: 0;
+             border-radius: 5px;
+             box-sizing: border-box;
+             margin: 0 15px 15px 0;
+             outline: none;
+             cursor: pointer;
+             user-select: none;
+             appearance: none;
+             touch-action: manipulation;
+            }
+       .btn:before {
+             content: '';
+             position: absolute;
+             left: -2px;
+             top: -2px;
+             width: calc(100% + 4px);
+             height: calc(100% + 4px);
+             background: linear-gradient(90deg, #1cac78, #3b5998);
+             z-index: -2;
+             transition: .4s;
+             border-radius: 5px;
+            }
+       .btn:after {
+             content: '';
+             position: absolute;
+             left: 0;
+             top: 0;
+             width: 100%;
+             height: 100%;
+             background: linear-gradient(90deg, #fff, #fff);
+             z-index: -1;
+             transition: .4s;
+             border-radius: 4px;
+            }
+        .btn:hover {
+             color: #fff;
+             transition: .3s;
+            }
+        .btn:hover:after {
+             background: linear-gradient(90deg, #1cac78, #3b5998);
+            }
+        .btn:active:after {
+             background: linear-gradient(90deg, #d96d2d, #760f3a);
+            }
+        .btn:focus-visible {
+             box-shadow: 0 0 0 3px #fd7f34;
+            }
+        .btn:disabled {
+             pointer-events: none;
+            }
+        .btn:disabled:before {
+             filter: grayscale(100%);
+            }
+        ul{
+            list-style-type: none;}
+
+    </style>
+</head>
+
+<body>
+<h1>Developer's portfolio</h1>
+<h3>Add new project:</h3>
+<form>
+    <div>
+        <label for="title">Project name<br></label>
+        <input type="text" name="title" id="title">
+    </div>
+    <div>
+        <label for="link">Link<br></label>
+        <input type="text" name="link" id="link">
+    </div>
+    <br/>
+    <div style="margin-left: 10px;">
+        <button onClick="addPortfolio()" class="btn">Add</button>
+        <button onClick="clearNotes()" class="btn">Clear</button>
+    </div>
+</form>
+<h3>All developer's projects:</h3>
+<ul id="output_clear" style="margin-right: 40px;">
+    {% for project in project_list %}
+    <li>
+        <div style="margin: 1em auto;">
+            <div>{{ project['title'] }}</div>
+            <div><a href="{{  project['link'] }}">{{ project['link'] }} </a></div>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+</body>
+</html>
